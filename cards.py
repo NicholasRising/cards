@@ -1,7 +1,7 @@
-SPADE='\u2660'
-DIAMOND='\u2666'
-CLUB='\u2663'
-HEART='\u2665'
+SPADES='\u2660'
+DIAMONDS='\u2666'
+CLUBS='\u2663'
+HEARTS='\u2665'
 
 def strCard(card):
     out=f'+{"-"*9}+\n'
@@ -87,9 +87,11 @@ def strCard(card):
     out+=f'|{card[1]}{" "*(8-len(card[0]))}{card[0]}|\n'
     return out+f'+{"-"*9}+\n'
 
-print(strCard(('A',HEART)))
-for i in range(2,11):
-    print(strCard((str(i),HEART)))
-print(strCard(('J',HEART)))
-print(strCard(('Q',HEART)))
-print(strCard(('K',HEART)))
+def strHand(hand):
+    cardLines=[strCard(card).split('\n') for card in hand]
+    out=''
+    for line in range(9):
+        out+='   '.join([card[line] for card in cardLines])+'\n'
+    return out
+
+print(strHand([('A',SPADES),('3',HEARTS),('J',DIAMONDS),('9',HEARTS)]))
