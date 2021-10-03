@@ -3,7 +3,7 @@ import random
 import time
 
 WIDTH=os.get_terminal_size().columns
-HEIGHT=os.get_terminal_size().lines-1
+HEIGHT=os.get_terminal_size().lines
 
 SPADE=SPADES='\u2660'
 DIAMOND=DIAMONDS='\u2666'
@@ -112,12 +112,6 @@ class Card:
                 grid+=[f'|{" "*9}|']
             grid+=[f'+{"-"*9}+']
         else:
-            
-# +-------------------+
-# |♥                 2|
-# |    ♥         ♥    |
-# |2                 ♥|
-# +-------------------+
             grid=[f'+{"-"*15}+']
             if self.rank and self.suit:
                 if self.rank!='J' and self.rank!='Q' and self.rank!='K':
@@ -191,10 +185,10 @@ class Card:
         return [list(line) for line in grid]
 
     def getWidth(self):
-        return 11 if not self.isHorizontal else 9
+        return 11 if not self.isHorizontal else 17
 
     def getHeight(self):
-        return 9 if not self.isHorizontal else 11
+        return 9 if not self.isHorizontal else 7
 
     def copy(self):
         return Card(self.rank,self.suit,self.x,self.y,self.isHorizontal)
@@ -211,16 +205,15 @@ def printCards(hand):
                     grid[row+card.y][col+card.x]=char
     out='\n'.join([''.join(line) for line in grid])
     os.system('cls' if os.name=='nt' else 'clear')
-    print(out)
+    print(out[:-1],end='',flush=True) # Don't print final character to keep cursor from scrolling down
 
+deck=newDeck()
+random.shuffle(deck)
 hand=[]
-for index,card in enumerate((newDeck()[:13])):
-    a=card
-    b=a.copy()
-    a.y=index*a.getHeight()
-    b.x=a.getWidth()
-    b.y=index*a.getHeight()
-    b.isHorizontal=True
-    hand.append(a)
-    hand.append(b)
+while deck:
+    card=deck.pop()
+    card.isHorizontal=random.random()>.5
+    card.x=int(random.random()*(WIDTH-card.getWidth()+1))
+    card.y=int(random.random()*(HEIGHT-card.getHeight()+1))
+    hand.append(card)
 printCards(hand)
