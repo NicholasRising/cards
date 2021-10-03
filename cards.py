@@ -12,124 +12,113 @@ def newDeck():
     random.shuffle(deck)
     return deck
 
-def strCard(card):
-    out=f'+{"-"*9}+\n'
+def cardGrid(card):
+    grid=[f'+{"-"*9}+']
     if card:
-        out+=f'|{card[0]}{" "*(8-len(card[0]))}{card[1]}|\n'
+        grid+=[f'|{card[0]}{" "*(8-len(card[0]))}{card[1]}|']
         if card[0]=='A':
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*9}|\n'
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*9}|']
         elif card[0]=='2':
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
         elif card[0]=='3':
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
         elif card[0]=='4':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='5':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='6':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='7':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*9}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*9}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='8':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='9':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*4}{card[1]}{" "*4}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*4}{card[1]}{" "*4}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='10':
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
-            out+=f'|{" "*3}{card[1]} {card[1]}{" "*3}|\n'
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
+            grid+=[f'|{" "*3}{card[1]} {card[1]}{" "*3}|']
         elif card[0]=='J':
-            out+=f'|    ww   |\n'
-            out+=f'|    {{)   |\n'
-            out+=f'|    {card[1]}    |\n'
-            out+=f'|    {card[1]}    |\n'
-            out+=f'|   {card[1]}{card[1]}[   |\n'
+            grid+=[f'|    ww   |']
+            grid+=[f'|    {{)   |']
+            grid+=[f'|    {card[1]}    |']
+            grid+=[f'|    {card[1]}    |']
+            grid+=[f'|   {card[1]}{card[1]}[   |']
         elif card[0]=='Q':
-            out+=f'|    ww   |\n'
-            out+=f'|    {{(   |\n'
-            out+=f'|    {card[1]}{card[1]}   |\n'
-            out+=f'|   {card[1]}{card[1]}{card[1]}   |\n'
-            out+=f'|   {card[1]}{card[1]}O   |\n'
+            grid+=[f'|    ww   |']
+            grid+=[f'|    {{(   |']
+            grid+=[f'|    {card[1]}{card[1]}   |']
+            grid+=[f'|   {card[1]}{card[1]}{card[1]}   |']
+            grid+=[f'|   {card[1]}{card[1]}O   |']
         elif card[0]=='K':
-            out+=f'|    WW   |\n'
-            out+=f'|    {{)   |\n'
-            out+=f'|    {card[1]}{card[1]}   |\n'
-            out+=f'|   {card[1]}{card[1]}{card[1]}   |\n'
-            out+=f'|   {card[1]}{card[1]}>   |\n'
-        out+=f'|{card[1]}{" "*(8-len(card[0]))}{card[0]}|\n'
+            grid+=[f'|    WW   |']
+            grid+=[f'|    {{)   |']
+            grid+=[f'|    {card[1]}{card[1]}   |']
+            grid+=[f'|   {card[1]}{card[1]}{card[1]}   |']
+            grid+=[f'|   {card[1]}{card[1]}>   |']
+        grid+=[f'|{card[1]}{" "*(8-len(card[0]))}{card[0]}|']
     else:
-        out+=f'|{" "*9}|\n'
-        out+=f'|  +---+  |\n'
-        out+=f'|  |   |  |\n'
-        out+=f'|  | O |  |\n'
-        out+=f'|  |   |  |\n'
-        out+=f'|  +---+  |\n'
-        out+=f'|{" "*9}|\n'
-    return out+f'+{"-"*9}+\n'
+        grid+=[f'|{" "*9}|']
+        grid+=[f'|  +---+  |']
+        grid+=[f'|  |   |  |']
+        grid+=[f'|  | O |  |']
+        grid+=[f'|  |   |  |']
+        grid+=[f'|  +---+  |']
+        grid+=[f'|{" "*9}|']
+    grid+=[f'+{"-"*9}+']
+    return [list(line) for line in grid]
 
-def printHand(hand):
-    if hand:
-        cardLines=[strCard(card).split('\n') for card in hand]
-        for line in range(9):
-            print('   '.join([card[line] for card in cardLines]))
-        print()
-
-def clear():
+def printCards(hand):
+    width=os.get_terminal_size().columns
+    height=os.get_terminal_size().lines-2
+    grid=[[' ']*width for line in range(height)]
+    for card,pos in hand:
+        for row,line in enumerate(cardGrid(card)):
+            for col,char in enumerate(line):
+                if 0<=row+pos[1]<height and 0<=col+pos[0]<width: # (x,y) is converted to (row,col) for printing
+                    grid[row+pos[1]][col+pos[0]]=char
     os.system('cls' if os.name=='nt' else 'clear')
+    for line in grid:
+        print(''.join(line))
 
 deck=newDeck()
-hand=[]
-while True:
-    clear()
-    printHand([None])
-    printHand(hand)
-    action=input()
-    if action.lower()=='draw':
-        draw=deck.pop()
-        time.sleep(1)
-        clear()
-        printHand([None,draw])
-        printHand(hand)
-        time.sleep(1)
-        hand.append(draw)
-        clear()
-        printHand([None])
-        printHand(hand)
+hand=[(('A',SPADES),(5,7)),(('5',HEARTS),(12,8))]
+printCards(hand)
