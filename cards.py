@@ -1,7 +1,16 @@
+import os
+import random
+import time
+
 SPADE=SPADES='\u2660'
 DIAMOND=DIAMONDS='\u2666'
 CLUB=CLUBS='\u2663'
 HEART=HEARTS='\u2665'
+
+def newDeck():
+    deck=[(rank,suit) for rank in ['A','2','3','4','5','6','7','8','9','10','J','Q','K'] for suit in [SPADES,DIAMONDS,CLUBS,HEARTS]]
+    random.shuffle(deck)
+    return deck
 
 def strCard(card):
     out=f'+{"-"*9}+\n'
@@ -96,11 +105,31 @@ def strCard(card):
         out+=f'|{" "*9}|\n'
     return out+f'+{"-"*9}+\n'
 
-def strHand(hand):
-    cardLines=[strCard(card).split('\n') for card in hand]
-    out=''
-    for line in range(9):
-        out+='   '.join([card[line] for card in cardLines])+'\n'
-    return out
+def printHand(hand):
+    if hand:
+        cardLines=[strCard(card).split('\n') for card in hand]
+        for line in range(9):
+            print('   '.join([card[line] for card in cardLines]))
+        print()
 
-print(strHand([('A',SPADES),('3',HEARTS),('J',DIAMONDS),('9',HEARTS),None]))
+def clear():
+    os.system('cls' if os.name=='nt' else 'clear')
+
+deck=newDeck()
+hand=[]
+while True:
+    clear()
+    printHand([None])
+    printHand(hand)
+    action=input()
+    if action.lower()=='draw':
+        draw=deck.pop()
+        time.sleep(1)
+        clear()
+        printHand([None,draw])
+        printHand(hand)
+        time.sleep(1)
+        hand.append(draw)
+        clear()
+        printHand([None])
+        printHand(hand)
